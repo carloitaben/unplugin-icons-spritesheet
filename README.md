@@ -5,8 +5,8 @@
 ![npm](https://img.shields.io/npm/dw/vite-plugin-icons-spritesheet?style=plastic) 
 ![GitHub top language](https://img.shields.io/github/languages/top/forge42dev/vite-plugin-icons-spritesheet?style=plastic) 
 
-# vite-plugin-icons-spritesheet
-A Vite plugin to generate a spritesheet with icons from a directory, re-runs on every edit/delete/add to the directory that is being watched.
+# unplugin-icons-spritesheet
+An Unplugin to generate a spritesheet with icons from a directory, re-runs on every edit/delete/add to the directory that is being watched.
 
 Optionally generates TypeScript types for the icon names that it outputs.
 
@@ -16,13 +16,13 @@ https://www.jacobparis.com/content/svg-icons
 
 ## Installation
 ```bash
-npm install -D vite-plugin-icons-spritesheet
+npm install -D unplugin-icons-spritesheet
 ```
 
 ## Usage
 ```javascript
 // vite.config.js
-import { iconsSpritesheet } from 'vite-plugin-icons-spritesheet';
+import { iconsSpritesheet } from 'unplugin-icons-spritesheet';
 
 export default {
   plugins: [

@@ -1,11 +1,9 @@
 {
-  "name": "vite-plugin-icons-spritesheet",
+  "name": "unplugin-icons-spritesheet",
   "version": "2.1.0",
-  "description": "Vite plugin that generates a spritesheet and types out of your icons folder.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "description": "Unplugin that generates a spritesheet and types out of your icons folder.",
   "keywords": [
+    "unplugin",
     "icons",
     "spritesheet",
     "vite",
@@ -15,30 +13,79 @@
     "angular",
     "vue",
     "nextjs",
+    "webpack",
+    "rollup",
     "remix"
   ],
   "exports": {
     ".": {
-      "import": {
-        "import": "./dist/index.mjs",
-        "default": "./dist/index.mjs",
-        "types": "./dist/index.d.mts"
-      },
-      "require": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.js",
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./astro": {
+      "types": "./dist/astro.d.ts",
+      "import": "./dist/astro.js",
+      "require": "./dist/astro.cjs"
+    },
+    "./rspack": {
+      "types": "./dist/rspack.d.ts",
+      "import": "./dist/rspack.js",
+      "require": "./dist/rspack.cjs"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.js",
+      "require": "./dist/vite.cjs"
+    },
+    "./webpack": {
+      "types": "./dist/webpack.d.ts",
+      "import": "./dist/webpack.js",
+      "require": "./dist/webpack.cjs"
+    },
+    "./rollup": {
+      "types": "./dist/rollup.d.ts",
+      "import": "./dist/rollup.js",
+      "require": "./dist/rollup.cjs"
+    },
+    "./esbuild": {
+      "types": "./dist/esbuild.d.ts",
+      "import": "./dist/esbuild.js",
+      "require": "./dist/esbuild.cjs"
+    },
+    "./nuxt": {
+      "types": "./dist/nuxt.d.ts",
+      "import": "./dist/nuxt.js",
+      "require": "./dist/nuxt.cjs"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js",
+      "require": "./dist/types.cjs"
+    },
+    "./*": "./*"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "vitest run",
     "test:cov": "vitest run --coverage",
-    "build": "tsup src/index.ts  --dts --format esm,cjs --outDir dist --minify --clean",
+    "build": "tsup --minify --clean",
     "remix:dev": "npm run dev -w test-apps/remix-vite",
     "remix:cjs:dev": "npm run dev -w test-apps/remix-vite-cjs",
-    "build:dev": "tsup src/index.ts --dts --format cjs,esm  --outDir dist",
+    "build:dev": "tsup",
     "build:dev:watch": "npm run build:dev -- --watch",
     "build:dev:cjs:watch": "npm run build:dev -- --watch",
     "dev": "npm-run-all -s build:dev -p remix:dev build:dev:watch",
@@ -59,9 +106,6 @@
   "bugs": {
     "url": "https://github.com/forge42dev/vite-plugin-icons-spritesheet/issues"
   },
-  "files": [
-    "dist"
-  ],
   "workspaces": [
     ".",
     "test-apps/*"
@@ -73,12 +117,40 @@
     "chalk": "^4.1.2",
     "glob": "^10.3.12",
     "node-html-parser": "^6.1.13",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "unplugin": "^1.5.1"
   },
   "peerDependencies": {
-    "vite": ">=5.2.0"
+    "@nuxt/kit": "^3",
+    "@nuxt/schema": "^3",
+    "esbuild": "*",
+    "rollup": "^3",
+    "vite": ">=5.2.0",
+    "webpack": "^4 || ^5"
+  },
+  "peerDependenciesMeta": {
+    "webpack": {
+      "optional": true
+    },
+    "rollup": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    },
+    "esbuild": {
+      "optional": true
+    },
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    }
   },
   "devDependencies": {
+    "@nuxt/kit": "^3.8.2",
+    "@nuxt/schema": "^3.8.2",
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
@@ -88,9 +160,11 @@
     "happy-dom": "^14.7.1",
     "husky": "^9.0.11",
     "npm-run-all": "^4.1.5",
+    "rollup": "^4.6.1",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vite": "5.2.11",
-    "vitest": "^1.5.2"
+    "vitest": "^1.5.2",
+    "webpack": "^5.89.0"
   }
 }
